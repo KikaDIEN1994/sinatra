@@ -9,10 +9,22 @@ class ApplicationController < Sinatra::Base
     erb :new_gossip
   end
 
- post '/gossips/new/' do
-  Gossip.new(").save
-    Gossip.new.save
-
+  post '/gossips/new/' do
+    Gossip.new("#{params["gossip_author"]}", "#{params["gossip_content"]}").save
+   # Gossip.new(info_formulaire_1, info_formulaire_2).save
+  end
+=begin
+  post '/gossips/new/' do
+  puts "Salut, je suis dans le serveur"
+  puts "Ceci est le contenu du hash params : #{params}"
+  puts "Trop bien ! Et ceci est ce que l'utilisateur a passé dans le champ gossip_author : #{params["gossip_author"]}"
+  puts "De la bombe, et du coup ça, ça doit être ce que l'utilisateur a passé dans le champ gossip_content : #{params["gossip_content"]}"
+  puts "Ça déchire sa mémé, bon allez je m'en vais du serveur, ciao les BGs !"
+  end
+=end
+  post '/gossips/new/' do
+  # ton super code qui enregistre un gossip en fonction de params
+  redirect '/'
 end
 
 end
