@@ -1,18 +1,18 @@
 require 'gossip'
 
-class ApplicationController < Sinatra::Base
-  get '/' do
-    erb :index
+class ApplicationController < Sinatra::Base # classe ApplicationController qui hérite de Sinatra
+  get '/' do # Chemin d'acces vers l'index
+    erb :index #affiche le contenu de index
   end
 
-  get '/gossips/new/' do
-    erb :new_gossip
+  get '/gossips/new/' do # chemin d'acces vers gossips\new
+    erb :new_gossip # affiche le contenu et new_gossip
   end
 
   post '/gossips/new/' do
-    Gossip.new("#{params["gossip_author"]}", "#{params["gossip_content"]}").save
-   # Gossip.new(info_formulaire_1, info_formulaire_2).save
+    Gossip.new("#{params["gossip_author"]}", "#{params["gossip_content"]}").save # recupere les valeurs taper dans les potins
   end
+
 =begin
   post '/gossips/new/' do
   puts "Salut, je suis dans le serveur"
@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
   puts "Ça déchire sa mémé, bon allez je m'en vais du serveur, ciao les BGs !"
   end
 =end
-  post '/gossips/new/' do
+  post '/gossips/new/' do # redirige la page vers les potins
   # ton super code qui enregistre un gossip en fonction de params
   redirect '/'
 end
